@@ -4,6 +4,25 @@ function App() {
 
   const [color, setColor] = useState("White")
 
+  const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
+
+  const getRandomNumber = () => {
+    const randomIndex = Math.floor(Math.random() * hex.length);
+    return hex[randomIndex];
+  };
+  
+  const generateHexColor = () => {
+    let hexColor = '#';
+    for (let i = 0; i < 6; i++) {
+      hexColor += getRandomNumber();
+    }
+    return hexColor;
+  };
+  
+
+  
+
+
   return (
 
     <div className="w-full h-screen duration-200"
@@ -39,6 +58,11 @@ function App() {
           onClick={() => setColor("maroon")}
            className="outline-none px-4 py-1 rounded-full text-white shadow-lg" 
           style={{backgroundColor:"maroon"}}> maroon </button>
+              <button
+          onClick={() => setColor(generateHexColor())}
+           className="outline-none px-4 py-1 rounded-full text-white shadow-lg" 
+          style={{backgroundColor:`${generateHexColor}`}}> </button>
+    
         </div>
       </div>
     </div>
